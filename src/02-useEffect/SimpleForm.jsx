@@ -20,7 +20,15 @@ export const SimpleForm = () => {
 
     useEffect( () => {
         console.log('useEffect se llamo')
-    })
+    }, []);
+
+    useEffect( () => {
+        console.log('formState cambio')
+    }, [formState]);
+
+    useEffect( () => {
+        console.log('email cambio')
+    }, [email]);
 
   return (
     <>
