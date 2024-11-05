@@ -1,5 +1,7 @@
 import { useReducer } from "react"
 import { todoReducer } from "./toReducer"
+import { TodoList } from "./TodoList";
+import { TodoAdd } from "./TodoAdd";
 
 
 const initialState = [
@@ -10,7 +12,7 @@ const initialState = [
     },
     {
         id: new Date().getTime()*3,
-        description: 'Recolectar la piedra del Alma',
+        description: 'Recolectar la piedra del Infinito',
         done: false, 
     }
 ]
@@ -20,6 +22,9 @@ export const TodoApp = () => {
 
     const [todos, dispatch] = useReducer( todoReducer, initialState );
 
+    const handleNewTodo = (todo) => {
+        console.log({todo})
+    }
 
   return (
     <>
@@ -28,30 +33,14 @@ export const TodoApp = () => {
 
         <div className="row">
             <div className="col-7">
-                <ul className="list-group">
-                    <li className="list-group-item d-flex justify-content-between">
-                        <span className="align-self-center">Item 1</span>
-                        <button className="btn btn-danger">Borrar</button>
-                    </li>
-                </ul>
+
+                <TodoList todos={todos}/>
             </div>
             <div className="col-5">
                 <h4>Agregar TODO </h4>
                 <hr />
+                    <TodoAdd onNewTodo={handleNewTodo} />
 
-                <form >
-                    <input 
-                        type="text"
-                        placeholder="Que hay que hacer?" 
-                        className="form-control"
-                    />
-                    <button 
-                        type="submit"
-                        className="btn btn-outline-primary mt-2"
-                    > 
-                        Agregar
-                    </button>
-                </form>
             </div>
 
 
