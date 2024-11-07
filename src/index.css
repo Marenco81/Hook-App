@@ -9,6 +9,3 @@ button {
 a {
     margin-right: 5px;
 }
-a::after {
-    content: "||";
-}
